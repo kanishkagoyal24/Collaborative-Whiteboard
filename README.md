@@ -1,99 +1,140 @@
-# 🎨 Collaborative Whiteboard
-
-A real-time collaborative whiteboard app built with **React**, **Node.js**, **Socket.io**, and **Fabric.js**. Collaborate with others in a shared drawing environment using powerful tools and live synchronization.
+Here’s a **fully rephrased README** for your Collaborative Whiteboard project — it keeps the structure and information intact but with a fresh, professional, and engaging tone.
 
 ---
 
-## 🚀 Features
+# 🧑‍🎨 Collaborative Whiteboard
 
-* 🖍️ **Live Drawing** — Multiple users can draw simultaneously on a shared canvas.
-* 🏠 **Room System** — Create or join rooms with optional password protection.
-* ✏️ **Drawing Tools** — Pen, eraser, text, rectangles, circles, and more.
-* 🔐 **User Permissions** — Set users as editors or view-only.
-* 💾 **Export Options** — Save your canvas as PNG, JPEG, PDF, or JSON.
-* ↩️ **Undo/Redo** — Basic undo/redo support for drawing actions.
+**Collaborative Whiteboard** is a real-time, browser-based canvas app enabling multiple users to sketch, draw shapes, add text, and co-create visually — simultaneously. It leverages **React**, **Fabric.js**, and **Socket.IO** to deliver smooth, multi-user collaboration.
 
 ---
 
-## 📦 Requirements
+## 📝 Overview
 
-* **Node.js** v14 or higher
-* **npm**
+This digital whiteboard platform is built for teams, educators, designers, or anyone who wants to visually collaborate in real-time.
 
----
+**Core Capabilities:**
 
-## 🔧 Getting Started
-
-### 🛠 Backend Setup
-
-1. Navigate to the backend folder:
-
-   ```bash
-   cd backend
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install express socket.io cors
-   ```
-
-3. Start the backend server:
-
-   ```bash
-   node index
-   ```
-
-> The backend will run at `http://localhost:4000`
+* Join or host custom rooms
+* Draw freely or use shapes and text tools
+* Instantly see others’ contributions
+* Control user permissions (editor/viewer mode)
 
 ---
 
-### 🎨 Frontend Setup
+## ✨ Features
 
-1. Navigate to the frontend folder:
+### 👥 User & Room Management
 
-   ```bash
-   cd frontend
-   ```
+* Set custom usernames
+* Create and join rooms (public/private)
+* Password-protected access
+* Role-based permissions (view-only or editor)
+* Live user presence and roles
 
-2. Install dependencies:
+### 🎨 Drawing Tools
 
-   ```bash
-   npm install react react-dom socket.io-client fabric
-   npm install -D vite @vitejs/plugin-react
-   ```
+* Pen tool with customizable color and stroke
+* Eraser functionality
+* Rectangle and circle drawing
+* Text input and editing
+* Object selection and manipulation
 
-3. Start the frontend dev server:
+### 🔁 Real-time Collaboration
 
-   ```bash
-   npm run dev
-   ```
+* Synchronized drawings across all users
+* Live path rendering and object updates
+* Instant canvas clearing
+* Real-time notifications for joining/leaving users
 
-> The frontend will be available at `http://localhost:5173`
+### 📦 Export Options
+
+* Download canvas as **PNG**, **JPEG**, or **PDF**
+* Save/load drawings as **JSON** for future editing
 
 ---
 
-## 📚 Tech Stack
-
-### Backend
-
-* `express` — Web server
-* `socket.io` — WebSocket communication
-* `cors` — Enable cross-origin requests
+## 🧰 Tech Stack
 
 ### Frontend
 
-* `react` / `react-dom` — UI rendering
-* `socket.io-client` — Real-time communication
-* `fabric` — Canvas rendering and manipulation
-* `vite` — Fast dev server & bundler
-* `@vitejs/plugin-react` — React plugin for Vite
+* ⚛️ React (with Hooks)
+* 🖼️ Fabric.js for canvas management
+* 🔌 Socket.IO (client-side)
+* 🎨 CSS3 (Minimal pastel theme)
+* ⚡ Vite for rapid development
+
+### Backend
+
+* 🟢 Node.js with Express
+* 🌐 Socket.IO server
+* 🔐 CORS enabled for cross-origin support
 
 ---
 
-## 🧪 How to Use
+## 🚀 Getting Started
 
-1. Open your browser at: `http://localhost:5173`
-2. Enter your name to register
-3. Create a room or join an existing one
-4. Start drawing and collaborate in real-time!
+### 📋 Requirements
+
+* Node.js v14 or higher
+* npm or yarn
+* Modern browser (WebSocket-enabled)
+
+---
+
+### ⚙️ Backend Setup
+
+```bash
+cd whiteboard-backend
+npm install
+node index.js
+```
+
+> Runs on: `http://localhost:10000`
+
+---
+
+### 🧑‍💻 Frontend Setup
+
+```bash
+cd whiteboard-frontend
+npm install
+npm run dev
+```
+
+> Default app URL: `http://localhost:5173`
+
+> ⚠️ Make sure the Socket.IO URL in `WhiteboardApp.jsx` matches your backend:
+
+```js
+const socket = io('http://localhost:10000', {
+  transports: ['websocket'],
+  withCredentials: true
+});
+```
+
+---
+
+## 📂 Running the Full Stack
+
+In two terminals:
+
+**Terminal 1 (Backend):**
+
+```bash
+cd whiteboard-backend
+node index.js
+```
+
+**Terminal 2 (Frontend):**
+
+```bash
+cd whiteboard-frontend
+npm run dev
+```
+
+Then, open your browser at:
+👉 [http://localhost:5173](http://localhost:5173)
+
+---
+
+Let me know if you'd like this in `README.md` format or need a version with screenshots or badges!
