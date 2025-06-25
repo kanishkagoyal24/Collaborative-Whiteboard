@@ -1,33 +1,218 @@
 /* Main container layout */
 .whiteboard-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100vh;
   font-family: 'Inter', 'Poppins', 'Rubik', Arial, sans-serif;
   background: linear-gradient(135deg, #1e2a38 0%, #2c3e50 100%);
   color: #e0e6ed;
 }
 
-/* Toolbar now on the right */
-.toolbar {
+/* User registration screen - fullscreen overlay */
+.registration-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1e2a38;
+  z-index: 3000;
+}
+
+.registration-form {
+  background: linear-gradient(135deg, #232f3e 0%, #263445 100%);
+  padding: 2.5rem 2rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(34, 49, 63, 0.22);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  color: #e0e6ed;
+}
+
+.registration-form h2 {
+  margin-bottom: 1rem;
+  color: #64b5f6;
+}
+
+.registration-form input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: 1.5px solid #3a4b5c;
+  border-radius: 10px;
+  font-size: 16px;
+  background: #232f3e;
+  color: #e0e6ed;
+  transition: border 0.3s;
+}
+
+.registration-form input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.registration-form button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #2196f3 0%, #64b5f6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 16px rgba(33, 150, 243, 0.18);
+}
+
+.registration-form button:hover {
+  background: linear-gradient(90deg, #4a90e2 0%, #2196f3 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Room selection interface - fullscreen overlay */
+.room-selection {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 18px;
-  padding: 28px 18px;
-  background: linear-gradient(135deg, #263445 0%, #2c3e50 100%);
-  border-left: 1px solid #3a4b5c;
-  box-shadow: -4px 0 16px 0 rgba(34, 49, 63, 0.18);
-  min-width: 90px;
-  max-width: 120px;
-  height: 100vh;
-  overflow-y: auto;
-  z-index: 100;
+  background: #1e2a38;
+  z-index: 3000;
+}
+
+.room-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #64b5f6;
+}
+
+.room-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.room-actions button {
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #2196f3 0%, #64b5f6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 16px rgba(33, 150, 243, 0.18);
+}
+
+.room-actions button:hover {
+  background: linear-gradient(90deg, #4a90e2 0%, #2196f3 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Room information header with centered title */
+.room-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #232f3e 0%, #2c3e50 100%);
+  color: #e0e6ed;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(34, 49, 63, 0.18);
+  border-bottom: 1.5px solid #3a4b5c;
+  border-radius: 0 0 14px 0;
+}
+
+.room-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: 700;
+  color: #e0e6ed;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.room-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: absolute;
+  left: 20px;
+}
+
+.room-details strong {
+  font-size: 16px;
+  font-weight: 600;
+  color: #64b5f6;
+}
+
+.owner-badge {
+  background: linear-gradient(90deg, #4a90e2 0%, #5dade2 100%);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.13);
+}
+
+.room-controls {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  right: 20px;
+}
+
+.room-controls button {
+  padding: 8px 16px;
+  background: #263445;
+  color: #e0e6ed;
+  border: 1.5px solid #3a4b5c;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(34, 49, 63, 0.12);
+}
+
+.room-controls button:hover {
+  background: linear-gradient(90deg, #4a90e2 0%, #5dade2 100%);
+  color: #fff;
+  border-color: #4a90e2;
+  transform: translateY(-1px) scale(1.03);
+}
+
+/* Drawing tools toolbar - centered layout */
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  background: linear-gradient(90deg, #232f3e 0%, #263445 100%);
+  border-bottom: 1.5px solid #3a4b5c;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(34, 49, 63, 0.08);
 }
 
 .toolbar button {
-  padding: 12px 0;
-  border: 1px solid #3a4b5c;
+  padding: 10px 18px;
+  border: 1.5px solid #3a4b5c;
   background: #263445;
   cursor: pointer;
   border-radius: 10px;
@@ -35,19 +220,15 @@
   font-size: 15px;
   font-weight: 500;
   color: #e0e6ed;
-  box-shadow: 0 2px 8px 0 rgba(34, 49, 63, 0.12);
-  width: 100%;
-  min-width: 70px;
-  outline: none;
+  box-shadow: 0 2px 8px rgba(34, 49, 63, 0.12);
 }
 
-.toolbar button:hover:not(:disabled),
-.toolbar button:focus-visible {
+.toolbar button:hover:not(:disabled) {
   background: linear-gradient(90deg, #4a90e2 0%, #5dade2 100%);
   color: #fff;
   border-color: #4a90e2;
-  box-shadow: 0 4px 16px 0 rgba(74, 144, 226, 0.22);
-  transform: translateY(-2px) scale(1.03);
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.22);
 }
 
 .toolbar button:disabled {
@@ -60,9 +241,10 @@
   background: linear-gradient(90deg, #2196f3 0%, #64b5f6 100%);
   color: #fff;
   border-color: #2196f3;
-  box-shadow: 0 4px 20px 0 rgba(33, 150, 243, 0.18);
+  box-shadow: 0 4px 20px rgba(33, 150, 243, 0.18);
 }
 
+/* Undo/Redo button styling */
 .undo-redo-btn {
   background: linear-gradient(90deg, #607d8b 0%, #4a90e2 100%) !important;
   color: #fff !important;
@@ -73,12 +255,18 @@
 .undo-redo-btn:hover:not(:disabled) {
   background: linear-gradient(90deg, #4a90e2 0%, #2196f3 100%) !important;
   border-color: #2196f3 !important;
-  box-shadow: 0 6px 16px 0 rgba(76, 175, 255, 0.18) !important;
+  box-shadow: 0 6px 16px rgba(76, 175, 255, 0.18) !important;
+}
+
+.undo-redo-btn:disabled {
+  background: #3a4b5c !important;
+  border-color: #3a4b5c !important;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .toolbar label {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 8px;
   font-size: 14px;
@@ -87,12 +275,12 @@
 }
 
 .toolbar input[type="color"] {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border: 2px solid #3a4b5c;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 2px 8px 0 rgba(34, 49, 63, 0.18);
+  box-shadow: 0 1px 3px rgba(34, 49, 63, 0.2);
   background: #263445;
   transition: border 0.2s;
 }
@@ -102,132 +290,38 @@
 }
 
 .toolbar input[type="range"] {
-  width: 70px;
-  margin-top: 8px;
+  width: 80px;
   accent-color: #4a90e2;
   background: transparent;
 }
 
+/* Visual separator between toolbar sections */
 .separator {
-  width: 90%;
-  height: 1.5px;
-  background: linear-gradient(to right, transparent, #3a4b5c 50%, transparent);
-  margin: 14px 0;
+  width: 1.5px;
+  height: 34px;
+  background: linear-gradient(to bottom, transparent, #3a4b5c 60%, transparent);
+  margin: 0 10px;
   border-radius: 2px;
 }
 
-/* Canvas container takes remaining space */
+/* Canvas container - centered drawing area */
 .canvas-container {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 32px;
-  background: linear-gradient(135deg, #1e2a38 0%, #2c3e50 100%);
+  background: #1e2a38;
+  padding: 24px;
 }
 
 .canvas-container canvas {
   border: 2px solid #3a4b5c;
-  border-radius: 16px;
-  box-shadow: 0 6px 32px 0 rgba(34, 49, 63, 0.22);
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(34, 49, 63, 0.22);
   background: #232f3e;
 }
 
-/* Room info header - top of canvas area */
-.room-info {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(100% - 120px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 18px 24px;
-  background: linear-gradient(90deg, #232f3e 60%, #2c3e50 100%);
-  color: #e0e6ed;
-  box-shadow: 0 4px 16px 0 rgba(34, 49, 63, 0.18);
-  border-bottom: 1.5px solid #3a4b5c;
-  z-index: 10;
-  border-radius: 0 0 14px 0;
-}
-
-.room-title {
-  font-size: 25px;
-  font-weight: 700;
-  color: #e0e6ed;
-  text-align: center;
-  letter-spacing: 0.02em;
-}
-
-.room-details {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  position: absolute;
-  left: 24px;
-}
-
-.room-details strong {
-  font-size: 16px;
-  font-weight: 600;
-  color: #64b5f6;
-}
-
-.owner-badge {
-  background: linear-gradient(90deg, #4a90e2 0%, #5dade2 100%);
-  color: #fff;
-  padding: 5px 16px;
-  border-radius: 14px;
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 2px 8px 0 rgba(74, 144, 226, 0.13);
-}
-
-.room-controls {
-  display: flex;
-  gap: 10px;
-  position: absolute;
-  right: 24px;
-}
-
-.room-controls button {
-  padding: 8px 18px;
-  background: #263445;
-  color: #e0e6ed;
-  border: 1px solid #3a4b5c;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 2px 8px 0 rgba(34, 49, 63, 0.12);
-  backdrop-filter: blur(6px);
-}
-
-.room-controls button:hover {
-  background: linear-gradient(90deg, #4a90e2 0%, #5dade2 100%);
-  color: #fff;
-  border-color: #4a90e2;
-  box-shadow: 0 4px 16px 0 rgba(74, 144, 226, 0.22);
-  transform: translateY(-2px) scale(1.03);
-}
-
-/* View-only permission indicator */
-.view-only-notice {
-  background: linear-gradient(90deg, #3a4b5c 0%, #607d8b 100%);
-  color: #e0e6ed;
-  padding: 10px 22px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-  box-shadow: 0 2px 8px 0 rgba(96, 125, 139, 0.18);
-  margin: 12px auto;
-  max-width: 240px;
-  border: 1px solid #3a4b5c;
-}
-
-/* Modal and other overlays */
+/* Modal overlay for dialogs */
 .modal {
   position: fixed;
   top: 0;
@@ -244,31 +338,29 @@
 .modal-content {
   background: linear-gradient(135deg, #232f3e 0%, #263445 100%);
   padding: 2.5rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 36px 0 rgba(34, 49, 63, 0.28);
+  border-radius: 14px;
+  box-shadow: 0 8px 36px rgba(34, 49, 63, 0.28);
   max-width: 500px;
-  width: 92%;
+  width: 90%;
   max-height: 80vh;
   overflow-y: auto;
   margin: 0 auto;
-  border: 1.5px solid #3a4b5c;
   color: #e0e6ed;
+  border: 1.5px solid #3a4b5c;
 }
 
 .modal-content h3 {
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
   color: #64b5f6;
-  font-size: 2rem;
-  font-weight: 700;
 }
 
 .modal-content input,
 .modal-content select {
   width: 100%;
   padding: 12px;
-  margin: 12px 0;
+  margin: 10px 0;
   border: 1.5px solid #3a4b5c;
   border-radius: 10px;
   box-sizing: border-box;
@@ -288,25 +380,25 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 10px 0;
+  margin: 8px 0;
   color: #b0bec5;
 }
 
 .modal-actions {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .modal-actions button {
-  padding: 10px 28px;
+  padding: 10px 24px;
   border: 1.5px solid #3a4b5c;
-  background: #263445;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: 600;
+  background: #263445;
   color: #e0e6ed;
+  font-weight: 600;
   font-size: 15px;
   transition: all 0.3s ease-in-out;
 }
@@ -315,7 +407,7 @@
   background: linear-gradient(90deg, #2196f3 0%, #64b5f6 100%);
   color: #fff;
   border: none;
-  box-shadow: 0 4px 16px 0 rgba(33, 150, 243, 0.22);
+  box-shadow: 0 4px 16px rgba(33, 150, 243, 0.22);
 }
 
 .modal-actions button:hover {
@@ -325,132 +417,153 @@
   transform: translateY(-2px) scale(1.04);
 }
 
-/* Welcome screen (modal) */
-.welcome-screen {
-  background: linear-gradient(135deg, #232f3e 0%, #263445 100%);
-  border-radius: 16px;
-  padding: 3rem 2rem;
+/* Export/Save dialog sections */
+.export-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1.5px solid #3a4b5c;
   text-align: center;
-  border: 1.5px solid #3a4b5c;
-  box-shadow: 0 12px 32px 0 rgba(34, 49, 63, 0.22);
 }
 
-.welcome-title {
-  font-size: 2.5rem;
+.export-section:last-of-type {
+  border-bottom: none;
+}
+
+.export-section h4 {
+  margin: 0 0 0.5rem 0;
   color: #64b5f6;
-  margin-bottom: 1rem;
-  font-weight: 700;
+  font-size: 16px;
 }
 
-.welcome-subtitle {
-  font-size: 1.2rem;
-  color: #b0bec5;
-  margin-bottom: 2rem;
+.export-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
 }
 
-.welcome-illustration {
-  margin: 2rem auto;
-  max-width: 200px;
-}
-
-.start-button {
+.export-btn {
+  padding: 10px 16px;
   background: linear-gradient(90deg, #2196f3 0%, #64b5f6 100%);
   color: #fff;
   border: none;
-  padding: 14px 38px;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  border-radius: 10px;
   cursor: pointer;
+  font-size: 14px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 8px 24px 0 rgba(33, 150, 243, 0.18);
+  min-width: 140px;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.18);
 }
 
-.start-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 32px 0 rgba(33, 150, 243, 0.32);
+.export-btn:hover {
+  background: linear-gradient(90deg, #4a90e2 0%, #2196f3 100%);
+  transform: translateY(-1px) scale(1.03);
 }
 
-/* Color picker section */
-.color-section {
+.export-btn:active {
+  transform: translateY(0);
+}
+
+/* Room and user list containers */
+.rooms-list,
+.users-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.room-item,
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1.5px solid #3a4b5c;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  background: #232f3e;
+  color: #e0e6ed;
+  box-shadow: 0 2px 8px rgba(34, 49, 63, 0.10);
+}
+
+.room-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin: 12px 0;
+  align-items: flex-start;
 }
 
-.color-swatches {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin: 10px 0;
+/* Permission management controls */
+.permission-controls {
+  display: flex;
+  gap: 5px;
 }
 
-.color-swatch {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 2px solid #3a4b5c;
-  box-shadow: 0 2px 8px 0 rgba(34, 49, 63, 0.18);
+.permission-controls button {
+  padding: 6px 10px;
+  font-size: 12px;
+  border: 1.5px solid #3a4b5c;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s;
   background: #263445;
+  color: #e0e6ed;
+  transition: all 0.2s;
 }
 
-.color-swatch:hover {
-  transform: scale(1.1);
-  border-color: #64b5f6;
+.permission-controls button:hover:not(:disabled) {
+  background: #4a90e2;
+  color: #fff;
+  border-color: #4a90e2;
 }
 
-.color-swatch.active {
-  border: 2px solid #2196f3;
-  transform: scale(1.13);
+.permission-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-/* Responsive design */
-@media (max-width: 900px) {
-  .room-info {
-    width: 100%;
-    position: static;
-    border-radius: 0 0 10px 10px;
-  }
-  .canvas-container {
-    padding: 12px;
-  }
+/* View-only permission indicator */
+.view-only-notice {
+  background: linear-gradient(90deg, #3a4b5c 0%, #607d8b 100%);
+  color: #e0e6ed;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(96, 125, 139, 0.18);
+  margin: 12px auto;
+  max-width: 240px;
+  border: 1.5px solid #3a4b5c;
 }
 
+/* Mobile responsive design */
 @media (max-width: 768px) {
-  .whiteboard-container {
-    flex-direction: column;
-  }
-  .toolbar {
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: auto;
-    min-width: 100%;
-    max-width: 100%;
-    padding: 12px;
-    border-left: none;
-    border-bottom: 1.5px solid #3a4b5c;
-    box-shadow: 0 2px 8px 0 rgba(34, 49, 63, 0.12);
-  }
   .room-info {
-    width: 100%;
-    position: static;
-    border-radius: 0 0 10px 10px;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
   }
+
+  .room-title {
+    position: static;
+    transform: none;
+    margin: 10px 0;
+  }
+
   .room-details,
   .room-controls {
     position: static;
     justify-content: center;
     margin: 5px 0;
   }
-  .room-title {
-    margin: 10px 0;
-    position: static;
+
+  .toolbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12px;
   }
-  .color-swatches {
-    grid-template-columns: repeat(6, 1fr);
+  .canvas-container {
+    padding: 10px;
+  }
+  .modal-content {
+    padding: 1.5rem 0.5rem;
   }
 }
