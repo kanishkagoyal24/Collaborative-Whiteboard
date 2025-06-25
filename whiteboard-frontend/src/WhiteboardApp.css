@@ -1,154 +1,312 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Beautiful Boxed Whiteboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts for a modern look -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: linear-gradient(135deg, #23243a 0%, #2b5876 40%, #4e4376 100%);
-      min-height: 100vh;
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .main-box {
-      max-width: 1200px;
-      margin: 48px auto;
-      background: linear-gradient(135deg, #f8fafc 0%, #e3e6f3 100%);
-      border-radius: 32px;
-      box-shadow: 0 8px 48px #1a223366, 0 1.5px 10px #60e1e033;
-      padding: 36px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      border: 3px solid #60e1e0;
-    }
-    .whiteboard-layout {
-      display: flex;
-      flex-direction: row;
-      gap: 40px;
-      min-height: 540px;
-    }
-    .toolbar {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-      background: linear-gradient(120deg, #23243a 60%, #60e1e0 100%);
-      border-radius: 20px;
-      box-shadow: 0 2px 12px #60e1e055;
-      padding: 32px 18px;
-      min-width: 140px;
-      margin: 0;
-      height: fit-content;
-    }
-    .toolbar button {
-      width: 100%;
-      padding: 14px 0;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(100deg, #f59e42 60%, #60e1e0 100%);
-      color: #23243a;
-      font-size: 1.1rem;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      box-shadow: 0 2px 8px #1a2233;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s, transform 0.1s;
-      margin-bottom: 8px;
-    }
-    .toolbar button:hover:not(:disabled) {
-      background: linear-gradient(90deg, #60e1e0 40%, #f59e42 100%);
-      color: #fff;
-      transform: scale(1.06);
-    }
-    .toolbar .selected {
-      background: #f59e42;
-      color: #fff;
-      border: 2px solid #60e1e0;
-      box-shadow: 0 4px 16px #f59e4288;
-    }
-    .toolbar label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.1rem;
-      color: #a1b7d6;
-      margin-bottom: 8px;
-    }
-    .toolbar input[type="color"] {
-      width: 38px;
-      height: 38px;
-      border: 2px solid #60e1e0;
-      border-radius: 10px;
-      background: #23243a;
-      cursor: pointer;
-      box-shadow: 0 1px 4px #1a2233;
-    }
-    .toolbar input[type="range"] {
-      width: 100px;
-      accent-color: #60e1e0;
-    }
-    .whiteboard-canvas-area {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(120deg, #e3e6f3 60%, #60e1e0 100%);
-      border: 2px solid #f59e42;
-      box-shadow: 0 4px 24px #60e1e033;
-      border-radius: 24px;
-      padding: 36px 0;
-      min-width: 0;
-    }
-    .whiteboard-canvas-area canvas {
-      border: 4px solid #f59e42;
-      border-radius: 24px;
-      background: #fff;
-      box-shadow: 0 8px 36px #23243a99;
-      transition: box-shadow 0.3s;
-      width: 700px;
-      height: 480px;
-      display: block;
-    }
-    /* Responsive adjustments */
-    @media (max-width: 1100px) {
-      .main-box { padding: 16px 2vw; }
-      .whiteboard-layout { gap: 18px; }
-      .whiteboard-canvas-area canvas { width: 95vw; max-width: 100%; }
-    }
-    @media (max-width: 800px) {
-      .main-box { padding: 10px 1vw; border-radius: 18px; }
-      .whiteboard-layout { flex-direction: column; gap: 18px; }
-      .toolbar { flex-direction: row; padding: 12px 6px; border-radius: 10px; min-width: 0; justify-content: center; }
-      .whiteboard-canvas-area { padding: 10px 0; margin: 10px 0; border-radius: 16px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="main-box">
-    <h1 style="text-align:center; color:#23243a; margin-bottom:0;">Colorful Boxed Whiteboard</h1>
-    <div class="whiteboard-layout">
-      <div class="toolbar">
-        <button class="selected">Pencil</button>
-        <button>Eraser</button>
-        <button>Clear</button>
-        <label>
-          Color:
-          <input type="color" value="#23243a"/>
-        </label>
-        <label>
-          Size:
-          <input type="range" min="1" max="20" value="5"/>
-        </label>
-      </div>
-      <div class="whiteboard-canvas-area">
-        <canvas id="canvas"></canvas>
-      </div>
-    </div>
-  </div>
-  <!-- Add your JS for drawing functionality here -->
-</body>
-</html>
+/* Main container layout */
+.whiteboard-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+}
+
+/* Toolbar now on the right */
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 15px;
+  background: #f8f9fa;
+  border-left: 1px solid #e9ecef;
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.05);
+  min-width: 80px;
+  max-width: 100px;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.toolbar button {
+  padding: 10px 16px;
+  border: 1px solid #dee2e6;
+  background: white;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  min-width: 60px;
+}
+
+.toolbar button:hover:not(:disabled) {
+  background: #e9ecef;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.toolbar button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+}
+
+.undo-redo-btn {
+  background: #28a745 !important;
+  color: white !important;
+  border-color: #28a745 !important;
+  font-weight: 600;
+}
+
+.undo-redo-btn:hover:not(:disabled) {
+  background: #218838 !important;
+  border-color: #1e7e34 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(40, 167, 69, 0.3) !important;
+}
+
+.undo-redo-btn:disabled {
+  background: #6c757d !important;
+  border-color: #6c757d !important;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toolbar label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.toolbar input[type="color"] {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar input[type="range"] {
+  width: 60px;
+  margin-top: 8px;
+}
+
+.separator {
+  width: 80%;
+  height: 1px;
+  background-color: #dee2e6;
+  margin: 10px 0;
+}
+
+/* Canvas container takes remaining space */
+.canvas-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.canvas-container canvas {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Room info header - top of canvas area */
+.room-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.room-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
+.room-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: absolute;
+  left: 20px;
+}
+
+.room-details strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.owner-badge {
+  background-color: rgba(46, 204, 113, 0.9);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.room-controls {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  right: 20px;
+}
+
+.room-controls button {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.room-controls button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* View-only permission indicator */
+.view-only-notice {
+  background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(255, 193, 7, 0.3);
+  margin: 10px auto;
+  max-width: 200px;
+}
+
+/* Modal and other overlays remain mostly unchanged */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  margin: 0 auto;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.modal-content label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+  .whiteboard-container {
+    flex-direction: column;
+  }
+  .toolbar {
+    flex-direction: row;
+    height: auto;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    border-left: none;
+    border-bottom: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  .room-info {
+    width: 100%;
+    position: static;
+  }
+  .room-details,
+  .room-controls {
+    position: static;
+    justify-content: center;
+    margin: 5px 0;
+  }
+  .room-title {
+    margin: 10px 0;
+    position: static;
+  }
+}
