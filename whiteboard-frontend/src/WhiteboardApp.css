@@ -1,162 +1,154 @@
-/* Main container layout */
-.whiteboard-container {
-  display: grid;
-  grid-template-rows: 80px 1fr 60px;
-  min-height: 100vh;
-  font-family: 'Montserrat', serif;
-  /* Vibrant, animated gradient background */
-  background: linear-gradient(135deg, #23243a 0%, #2b5876 40%, #4e4376 100%);
-  animation: bgMove 18s ease-in-out infinite alternate;
-}
-
-@keyframes bgMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-/* Registration overlay */
-.registration-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: linear-gradient(120deg, #1a2233 80%, #60e1e0 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Registration form */
-.registration-form {
-  background: linear-gradient(120deg, #23243a 70%, #f59e42 100%);
-  border-radius: 32px;
-  box-shadow: 0 10px 40px #000a 0.2;
-  padding: 2.5rem 2rem;
-  border: 3px solid #60e1e0;
-  max-width: 400px;
-  width: 90vw;
-}
-
-/* Room selection overlay */
-.room-selection-overlay {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, #60e1e0 0%, #23243a 100%);
-  z-index: 900;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Toolbar */
-.toolbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  padding: 20px 32px;
-  background: linear-gradient(90deg, #23243a 60%, #60e1e0 100%);
-  border-bottom: 4px solid #f59e42;
-  box-shadow: 0 8px 32px #1a2233;
-}
-
-/* Buttons (already colorful, kept as before) */
-.toolbar button,
-.registration-form button,
-.room-selection-actions button,
-.modal-actions button {
-  padding: 14px 22px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(100deg, #f59e42 60%, #60e1e0 100%);
-  color: #23243a;
-  font-size: 1.1rem;
-  font-family: 'Montserrat', serif;
-  font-weight: 600;
-  box-shadow: 0 2px 8px #1a2233;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, transform 0.1s;
-}
-
-.toolbar button:hover:not(:disabled),
-.registration-form button:hover,
-.room-selection-actions button:hover,
-.modal-actions button:hover {
-  background: linear-gradient(90deg, #60e1e0 40%, #f59e42 100%);
-  color: #fff;
-  transform: scale(1.06);
-}
-
-.toolbar .selected {
-  background: #f59e42;
-  color: #fff;
-  border: 2px solid #60e1e0;
-  box-shadow: 0 4px 16px #f59e4288;
-}
-
-/* Whiteboard screen area */
-.whiteboard-canvas-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(120deg, #23243a 60%, #4e4376 100%);
-  padding: 36px 0;
-  border-radius: 32px;
-  margin: 24px 32px;
-  box-shadow: 0 8px 36px #1a2233cc;
-  /* subtle border for separation */
-  border: 3px solid #60e1e0;
-}
-
-/* Whiteboard canvas */
-.whiteboard-canvas-area canvas {
-  border: 4px solid #f59e42;
-  border-radius: 24px;
-  background: #fff;
-  box-shadow: 0 8px 36px #23243a99;
-  transition: box-shadow 0.3s;
-}
-
-.whiteboard-canvas-area canvas:focus {
-  box-shadow: 0 0 0 4px #60e1e0, 0 8px 36px #23243a99;
-}
-
-/* Modal dialog */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(30, 34, 51, 0.90);
-  display: grid;
-  place-items: center;
-  z-index: 2000;
-}
-
-.modal-dialog {
-  background: linear-gradient(120deg, #23243a 70%, #60e1e0 100%);
-  padding: 2.4rem 2rem;
-  border-radius: 32px;
-  box-shadow: 0 6px 24px #1a2233;
-  max-width: 540px;
-  width: 94vw;
-  color: #f5f5f5;
-  font-family: 'Montserrat', serif;
-}
-
-/* Responsive adjustments */
-@media (max-width: 800px) {
-  .whiteboard-container {
-    grid-template-rows: 60px 1fr 44px;
-  }
-  .toolbar {
-    gap: 10px;
-    padding: 8px 4px;
-  }
-  .whiteboard-canvas-area {
-    padding: 10px 0;
-    margin: 10px 4px;
-    border-radius: 16px;
-  }
-  .modal-dialog {
-    padding: 1.2rem 0.7rem;
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Beautiful Boxed Whiteboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts for a modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #23243a 0%, #2b5876 40%, #4e4376 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .main-box {
+      max-width: 1200px;
+      margin: 48px auto;
+      background: linear-gradient(135deg, #f8fafc 0%, #e3e6f3 100%);
+      border-radius: 32px;
+      box-shadow: 0 8px 48px #1a223366, 0 1.5px 10px #60e1e033;
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      border: 3px solid #60e1e0;
+    }
+    .whiteboard-layout {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      min-height: 540px;
+    }
+    .toolbar {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      background: linear-gradient(120deg, #23243a 60%, #60e1e0 100%);
+      border-radius: 20px;
+      box-shadow: 0 2px 12px #60e1e055;
+      padding: 32px 18px;
+      min-width: 140px;
+      margin: 0;
+      height: fit-content;
+    }
+    .toolbar button {
+      width: 100%;
+      padding: 14px 0;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(100deg, #f59e42 60%, #60e1e0 100%);
+      color: #23243a;
+      font-size: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      box-shadow: 0 2px 8px #1a2233;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.1s;
+      margin-bottom: 8px;
+    }
+    .toolbar button:hover:not(:disabled) {
+      background: linear-gradient(90deg, #60e1e0 40%, #f59e42 100%);
+      color: #fff;
+      transform: scale(1.06);
+    }
+    .toolbar .selected {
+      background: #f59e42;
+      color: #fff;
+      border: 2px solid #60e1e0;
+      box-shadow: 0 4px 16px #f59e4288;
+    }
+    .toolbar label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      color: #a1b7d6;
+      margin-bottom: 8px;
+    }
+    .toolbar input[type="color"] {
+      width: 38px;
+      height: 38px;
+      border: 2px solid #60e1e0;
+      border-radius: 10px;
+      background: #23243a;
+      cursor: pointer;
+      box-shadow: 0 1px 4px #1a2233;
+    }
+    .toolbar input[type="range"] {
+      width: 100px;
+      accent-color: #60e1e0;
+    }
+    .whiteboard-canvas-area {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(120deg, #e3e6f3 60%, #60e1e0 100%);
+      border: 2px solid #f59e42;
+      box-shadow: 0 4px 24px #60e1e033;
+      border-radius: 24px;
+      padding: 36px 0;
+      min-width: 0;
+    }
+    .whiteboard-canvas-area canvas {
+      border: 4px solid #f59e42;
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 8px 36px #23243a99;
+      transition: box-shadow 0.3s;
+      width: 700px;
+      height: 480px;
+      display: block;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 1100px) {
+      .main-box { padding: 16px 2vw; }
+      .whiteboard-layout { gap: 18px; }
+      .whiteboard-canvas-area canvas { width: 95vw; max-width: 100%; }
+    }
+    @media (max-width: 800px) {
+      .main-box { padding: 10px 1vw; border-radius: 18px; }
+      .whiteboard-layout { flex-direction: column; gap: 18px; }
+      .toolbar { flex-direction: row; padding: 12px 6px; border-radius: 10px; min-width: 0; justify-content: center; }
+      .whiteboard-canvas-area { padding: 10px 0; margin: 10px 0; border-radius: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-box">
+    <h1 style="text-align:center; color:#23243a; margin-bottom:0;">Colorful Boxed Whiteboard</h1>
+    <div class="whiteboard-layout">
+      <div class="toolbar">
+        <button class="selected">Pencil</button>
+        <button>Eraser</button>
+        <button>Clear</button>
+        <label>
+          Color:
+          <input type="color" value="#23243a"/>
+        </label>
+        <label>
+          Size:
+          <input type="range" min="1" max="20" value="5"/>
+        </label>
+      </div>
+      <div class="whiteboard-canvas-area">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+  </div>
+  <!-- Add your JS for drawing functionality here -->
+</body>
+</html>
