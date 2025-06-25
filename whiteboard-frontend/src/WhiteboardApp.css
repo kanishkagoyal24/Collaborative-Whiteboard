@@ -7,7 +7,28 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="whiteboard-container">
+  <!-- Splash / Welcome Modal -->
+  <div class="modal" id="welcome-modal">
+    <div class="modal-content welcome-screen">
+      <h1 class="welcome-title">Welcome to Whiteboard</h1>
+      <p class="welcome-subtitle">Collaborate, create, and share ideas in real time</p>
+      <div class="welcome-illustration">
+        <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="180" height="80" rx="10" fill="#f0f4f8" stroke="#007bff" stroke-width="2"/>
+          <circle cx="40" cy="40" r="10" fill="#007bff"/>
+          <circle cx="70" cy="40" r="10" fill="#28a745"/>
+          <circle cx="100" cy="40" r="10" fill="#ffc107"/>
+          <rect x="130" y="30" width="50" height="20" rx="5" fill="#fd7e14"/>
+        </svg>
+      </div>
+      <div class="modal-actions">
+        <button class="start-button" id="start-whiteboard">Start Whiteboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Whiteboard UI -->
+  <div class="whiteboard-container" id="whiteboard-ui" style="display: none;">
     <div class="room-info">
       <div class="room-details">
         <strong>Room:</strong>
@@ -45,6 +66,10 @@
           <div class="color-swatch" style="background-color: #ffcc00;"></div>
           <div class="color-swatch" style="background-color: #66ff66;"></div>
           <div class="color-swatch" style="background-color: #00ffff;"></div>
+          <div class="color-swatch" style="background-color: #ff6699;"></div>
+          <div class="color-swatch" style="background-color: #6699ff;"></div>
+          <div class="color-swatch" style="background-color: #66ffcc;"></div>
+          <div class="color-swatch" style="background-color: #cc66ff;"></div>
         </div>
       </div>
       <div class="separator"></div>
@@ -57,5 +82,11 @@
       <button class="undo-redo-btn">Redo</button>
     </div>
   </div>
+  <script>
+    document.getElementById('start-whiteboard').addEventListener('click', function() {
+      document.getElementById('welcome-modal').style.display = 'none';
+      document.getElementById('whiteboard-ui').style.display = 'flex';
+    });
+  </script>
 </body>
 </html>
