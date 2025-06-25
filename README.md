@@ -1,7 +1,5 @@
-Here’s a **fully rephrased README** for your Collaborative Whiteboard project — it keeps the structure and information intact but with a fresh, professional, and engaging tone.
-
----
-
+Click on the link to run the Deployed WebApp:https://collaborative-whiteboard-orpin.vercel.app/
+Video Demonstration Link: https://drive.google.com/file/d/1Dt6VICqZTyueVH1M9GjmsBtRQO0RkgeW/view?usp=drive_link
 # 🧑‍🎨 Collaborative Whiteboard
 
 **Collaborative Whiteboard** is a real-time, browser-based canvas app enabling multiple users to sketch, draw shapes, add text, and co-create visually — simultaneously. It leverages **React**, **Fabric.js**, and **Socket.IO** to deliver smooth, multi-user collaboration.
