@@ -1,70 +1,92 @@
-Collaborative Whiteboard – Real-Time Drawing Application
-The Collaborative Whiteboard is a web-based application that enables multiple users to draw and interact on a shared canvas in real-time. Built using React, Node.js, Socket.io, and Fabric.js, this tool is designed for seamless collaboration and efficient team brainstorming or creative work.
+🎨 Collaborative Whiteboard
+A real-time collaborative whiteboard app built with React, Node.js, Socket.io, and Fabric.js. Collaborate with others in a shared drawing environment using powerful tools and live synchronization.
 
-Key Highlights
-Live Multi-User Collaboration: Multiple users can draw on the canvas simultaneously, with real-time updates.
+🚀 Features
+🖍️ Live Drawing — Multiple users can draw simultaneously on a shared canvas.
 
-Room-Based Management: Users can create or join rooms, each optionally secured with a password.
+🏠 Room System — Create or join rooms with optional password protection.
 
-Comprehensive Drawing Tools: Includes pen, eraser, text, and shape tools such as rectangles and circles.
+✏️ Drawing Tools — Pen, eraser, text, rectangles, circles, and more.
 
-User Access Control: Differentiates between editing and view-only permissions for better room management.
+🔐 User Permissions — Set users as editors or view-only.
 
-Export Options: Supports exporting the whiteboard in PNG, JPEG, PDF, and JSON formats.
+💾 Export Options — Save your canvas as PNG, JPEG, PDF, or JSON.
 
-Undo/Redo Functionality: Basic undo and redo operations to correct mistakes quickly.
+↩️ Undo/Redo — Basic undo/redo support for drawing actions.
 
-System Requirements
-Node.js (version 14 or above)
+📦 Requirements
+Node.js v14 or higher
 
-npm (Node Package Manager)
+npm
 
-Project Setup
-Backend Setup
-Navigate to the backend directory.
+🔧 Getting Started
+🛠 Backend Setup
+Navigate to the backend folder:
 
-Install required dependencies:
+bash
+Copy
+Edit
+cd backend
+Install dependencies:
 
-lua
+bash
 Copy
 Edit
 npm install express socket.io cors
 Start the backend server:
 
-perl
+bash
 Copy
 Edit
 node index
-Server runs at: http://localhost:4000
+The backend will run at http://localhost:4000
 
-Frontend Setup
-Navigate to the frontend directory.
+🎨 Frontend Setup
+Navigate to the frontend folder:
 
+bash
+Copy
+Edit
+cd frontend
 Install dependencies:
 
-nginx
+bash
 Copy
 Edit
 npm install react react-dom socket.io-client fabric
 npm install -D vite @vitejs/plugin-react
-Start the frontend development server:
+Start the frontend dev server:
 
-arduino
+bash
 Copy
 Edit
 npm run dev
-Application runs at: http://localhost:5173
+The frontend will be available at http://localhost:5173
 
-Technology Stack
-Frontend: React, Vite, Fabric.js, Socket.io-client
+📚 Tech Stack
+Backend
+express — Web server
 
-Backend: Express.js, Socket.io, CORS
+socket.io — WebSocket communication
 
-How to Use
-Launch the frontend at http://localhost:5173.
+cors — Enable cross-origin requests
 
-Enter a username to register.
+Frontend
+react / react-dom — UI rendering
 
-Create a new room or join an existing one.
+socket.io-client — Real-time communication
 
-Begin drawing and collaborating with other users in real-time.
+fabric — Canvas rendering and manipulation
+
+vite — Fast dev server & bundler
+
+@vitejs/plugin-react — React plugin for Vite
+
+🧪 How to Use
+Open your browser at: http://localhost:5173
+
+Enter your name to register
+
+Create a room or join an existing one
+
+Start drawing and collaborate in real-time!
