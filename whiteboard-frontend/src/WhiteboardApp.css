@@ -1,232 +1,226 @@
-/* Redesigned CSS for a clean, modern whiteboard UI */
+/* Completely Reimagined CSS for Whiteboard UI */
 
-body, html {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background: #eceff1;
 }
 
 .whiteboard-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr;
   height: 100vh;
-  background-color: #f0f2f5;
+  background: linear-gradient(145deg, #ffffff, #e3e3e3);
 }
 
-/* Centered modals and screens */
 .registration-screen,
 .room-selection,
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(240, 240, 240, 0.95);
-  z-index: 3000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(250, 250, 250, 0.9);
+  z-index: 999;
 }
 
 .registration-form,
 .modal-content {
   background: #ffffff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  max-width: 450px;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
   width: 100%;
-  text-align: center;
+  max-width: 420px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 .registration-form input,
 .modal-content input,
 .modal-content select {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  padding: 14px;
+  margin: 12px 0;
+  border: 2px solid #cfd8dc;
+  border-radius: 6px;
+  background-color: #fafafa;
+  font-size: 15px;
 }
 
 .registration-form button,
 .room-actions button,
 .modal-actions button,
 .export-btn {
+  background: #673ab7;
+  color: #fff;
   padding: 12px;
   border: none;
-  border-radius: 6px;
-  background-color: #4a90e2;
-  color: #fff;
-  font-size: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background 0.3s ease;
 }
 
 .registration-form button:hover,
 .room-actions button:hover,
 .modal-actions button:hover,
 .export-btn:hover {
-  background-color: #357ab8;
-  transform: translateY(-2px);
+  background: #5e35b1;
 }
 
 .room-header {
+  font-size: 26px;
+  font-weight: 700;
   text-align: center;
-  font-size: 24px;
-  font-weight: 600;
+  padding: 1rem;
+  color: #424242;
 }
 
 .room-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background: #2d3a4b;
+  background: #1a237e;
   color: #fff;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .room-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
-  text-align: center;
 }
 
 .room-details,
 .room-controls {
   display: flex;
+  gap: 12px;
   align-items: center;
-  gap: 10px;
 }
 
 .owner-badge {
-  background-color: #28a745;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  color: #fff;
+  background: #43a047;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 20px;
+  color: white;
 }
 
 .room-controls button {
-  padding: 8px 14px;
+  background: #ffffff10;
   border: 1px solid #ffffff50;
+  color: white;
+  padding: 10px 16px;
   border-radius: 6px;
-  background-color: transparent;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.2s;
+  transition: 0.2s;
 }
 
 .room-controls button:hover {
-  background-color: #ffffff20;
-  transform: translateY(-1px);
+  background: #ffffff30;
 }
 
 .toolbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 10px 20px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  gap: 10px;
+  padding: 12px 20px;
+  background: #fafafa;
+  border-bottom: 2px solid #ccc;
+  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .toolbar button {
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
-  font-size: 14px;
+  padding: 10px 12px;
+  background: #e0e0e0;
+  border: none;
+  border-radius: 4px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .toolbar button.active {
-  background-color: #007bff;
+  background: #039be5;
   color: #fff;
-  border-color: #007bff;
 }
 
 .undo-redo-btn {
-  background-color: #28a745;
-  color: white;
-  border-color: #28a745;
+  background: #388e3c !important;
+  color: #fff !important;
 }
 
 .undo-redo-btn:hover {
-  background-color: #218838;
+  background: #2e7d32 !important;
 }
 
 .toolbar input[type="color"] {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   border: none;
-  border-radius: 6px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+  box-shadow: 0 0 0 2px #bbb;
 }
 
 .toolbar input[type="range"] {
-  width: 100px;
+  width: 90px;
 }
 
 .canvas-container {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f1f3f6;
-  padding: 20px;
+  padding: 25px;
+  background: #ffffff;
 }
 
 .canvas-container canvas {
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #bbb;
+  border-radius: 12px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.05);
 }
 
 .export-section {
-  margin-bottom: 1rem;
+  padding: 1rem;
   text-align: center;
 }
 
 .rooms-list,
 .users-list {
-  max-height: 250px;
   overflow-y: auto;
-  margin-top: 10px;
+  max-height: 240px;
+  margin-top: 12px;
 }
 
 .room-item,
 .user-item {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background-color: #fafafa;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-bottom: 8px;
-  background-color: #fff;
 }
 
 .permission-controls {
   display: flex;
-  gap: 5px;
+  gap: 6px;
 }
 
 .permission-controls button {
-  padding: 4px 8px;
+  background: #e8eaf6;
+  padding: 4px 10px;
+  border: 1px solid #c5cae9;
   font-size: 12px;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-  background-color: #f8f9fa;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -235,14 +229,15 @@ body, html {
   .room-controls,
   .room-details {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .room-title {
-    margin: 10px 0;
+    margin: 8px 0;
   }
 
   .toolbar {
+    flex-wrap: wrap;
     justify-content: center;
   }
 }
